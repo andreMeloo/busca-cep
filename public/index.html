@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+    <script src="/public/scripts/main.js"></script>
+    <title>Busca CEP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex justify-center items-start h-screen mt-[150px] font-mono overflow-hidden">
+    <table>
+        <caption class="mb-5 font-bold">Busca de Endereço</caption>
+        <tbody class="mb-5">
+            <tr>
+                <th class="label">
+                    <label for="cep">CEP:</label>
+                </th>
+                <td class="flex items-center">
+                    <input size="13" type="text" name="cep" id="cep" placeholder="_____-___"
+                           class="input-form mr-5"/>
+                    <img src="/public/resources/lupa.png" alt="Pesquisar CEP" title="Pesquise por seu CEP"
+                         id="find-button" class="cursor-pointer w-6">
+                </td>
+            </tr>
+            <tr>
+                <th class="label">
+                    <label for="logradouro">Logradouro:</label>
+                </th>
+                <td>
+                    <input size="50" disabled type="text" name="logradouro" id="logradouro" 
+                           class="input-form"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">
+                    <label for="complemento">Complemento:</label>
+                </th>
+                <td>
+                    <input size="50" disabled type="text" name="complemento" id="complemento" 
+                           class="input-form"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">
+                    <label for="bairro">Bairro:</label>
+                </th>
+                <td>
+                    <input disabled type="text" name="bairro" id="bairro" 
+                           class="input-form"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">
+                    <label for="municipio">Município:</label>
+                </th>
+                <td>
+                    <input disabled type="text" name="municipio" id="municipio" 
+                           class="input-form"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="label">
+                    <label for="uf">Uf:</label>
+                </th>
+                <td>
+                    <input disabled type="text" name="uf" id="uf" 
+                           class="input-form"/>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr id="blocoErros" class="text-center">
+                <td colspan="2">
+                    <div class="flex items-center justify-center pt-5">
+                        <span id="msgErro" class="mr-2 text-red-500"></span>
+                        <img width="10" id="exit-msg" src="/public/resources/fechar-msg.png" alt="Icone fechar mensagem" title="Fechar Mensagem de Erro." class="cursor-pointer">
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

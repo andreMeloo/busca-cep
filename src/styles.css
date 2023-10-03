@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .input-form {
+      @apply py-0.5 px-2 border border-black rounded focus:outline-none;
+    }
+
+    .label {
+        @apply text-right px-4;
+    }
+  }
