@@ -24,6 +24,56 @@ $(document).ready(() => {
                     $('#bairro').val(data.bairro);
                     $('#municipio').val(data.localidade);
                     $('#uf').val(data.uf);
+
+                    var apiKey = '85765be5edbd4077b82457da5329452b';
+                    var endereco = data.logradouro + ", " + data.localidade + ", " + data.uf + ", " + "Brasil";
+
+                    $.ajax({
+                        url: 'https://api.opencagedata.com/geocode/v1/json',
+                        data: {
+                            q: endereco,
+                            key: apiKey
+                        },
+                        success: function (dataGeoCod) {
+                            if (dataGeoCod.results.length > 0) {
+                                var latitude = dataGeoCod.results[0].geometry.lat;
+                                var longitude = dataGeoCod.results[0].geometry.lng;
+                                
+                                // Initialize and add the map
+                                let map;
+
+                                async function initMap() {
+                                    // The location of Uluru
+                                    const position = { lat: latitude, lng: longitude };
+                                    // Request needed libraries.
+                                    //@ts-ignore
+                                    const { Map } = await google.maps.importLibrary("maps");
+
+                                    // The map, centered at Uluru
+                                    map = new Map(document.getElementById("map"), {
+                                        zoom: 15,
+                                        center: position,
+                                        mapId: "DEMO_MAP_ID",
+                                    });
+
+                                    // O marcador, posicionado nas coordenadas obtidas pela geocodificação
+                                    const marker = new google.maps.Marker({
+                                        map: map,
+                                        position: position,
+                                        title: data.localidade,
+                                    });
+                                    $('#map-container').show();
+                                }
+
+                                initMap();
+                            } else {
+                                $('#map-container').hide();
+                            }
+                        },
+                        error: function () {
+                            $('#map-container').hide();
+                        }
+                    });
                 } else {
                     mensagemErro = "Nenhum endereço localizado com o CEP informado.";
                     ativaErro(mensagemErro);
@@ -59,6 +109,7 @@ function validaDadosCEP(valorCep) {
 function ativaErro(msg) {
     $('#msgErro').text(msg);
     $('#blocoErros').show();
+    $('#map-container').hide();
 }
 
 function fechaErro() {
