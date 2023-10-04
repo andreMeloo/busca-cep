@@ -53,14 +53,14 @@ $(document).ready(() => {
                                     map = new Map(document.getElementById("map"), {
                                         zoom: 15,
                                         center: position,
-                                        mapId: "DEMO_MAP_ID",
+                                        mapId: "DEMO_MAP_ID"
                                     });
 
                                     // O marcador, posicionado nas coordenadas obtidas pela geocodificação
                                     const marker = new google.maps.Marker({
                                         map: map,
                                         position: position,
-                                        title: data.localidade,
+                                        title: data.localidade
                                     });
                                     $('#map-container').show();
                                 }

@@ -11,3 +11,10 @@
         @apply text-right px-4;
     }
   }
+.gmnoprint {
+    transform: scale(0.75); 
+}
+
+.gm-control-active {
+    transform: scale(0.75);
+}
